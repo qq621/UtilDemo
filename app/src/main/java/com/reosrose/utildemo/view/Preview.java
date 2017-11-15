@@ -33,6 +33,7 @@ public class Preview extends SurfaceView implements SurfaceHolder.Callback {
             mCamera = Camera.open();
         } catch (Exception e) {
             e.printStackTrace();
+
             showError();
         }
     }
