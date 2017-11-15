@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.reosrose.utildemo.activity.MainActivity">
+    <Button
+        android:id="@+id/open_camera"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:background="@drawable/botton_shape"
+        android:textColor="@color/wighte"
+        android:textSize="18sp"
+        android:text="相机"
+        android:layout_width="100dp"
+        android:layout_height="48dp" />
+    <Button
+        android:id="@+id/open_gallery"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:background="@drawable/botton_shape"
+        android:textColor="@color/wighte"
+        android:textSize="18sp"
+        android:text="图库"
+        android:layout_width="100dp"
+        android:layout_height="48dp" />
+    <ImageButton
+        android:id="@+id/imageViewId"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent" />
+
+</LinearLayout>
