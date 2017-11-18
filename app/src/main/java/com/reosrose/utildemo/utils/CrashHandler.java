@@ -26,7 +26,7 @@ import java.util.Map;
  */
 
 public class CrashHandler implements UncaughtExceptionHandler {
-    public static final String TAG = CrashHandler.class.getSimpleName();
+    private static final String TAG = CrashHandler.class.getSimpleName();
     //CrashHandler实例
     private static CrashHandler crashHandler = new CrashHandler();
     //系统默认的UncaughtException处理类
@@ -130,9 +130,9 @@ public class CrashHandler implements UncaughtExceptionHandler {
             try {
                 field.setAccessible(true);
                 infos.put(field.getName(), field.get(null).toString());
-                Log.d(TAG, field.getName() + " : " + field.get(null));
+                LogUtils.e(field.getName() + " : " + field.get(null));
             } catch (Exception e) {
-                Log.e(TAG, "an error occured when collect crash info", e);
+                LogUtils.e("an error occured when collect crash info "+ e);
             }
         }
     }
@@ -178,7 +178,7 @@ public class CrashHandler implements UncaughtExceptionHandler {
             }
             return fileName;
         } catch (Exception e) {
-            Log.e(TAG, "an error occured while writing file...", e);
+            LogUtils.e("an error occured while writing file..."+ e);
         }
         return null;
     }
