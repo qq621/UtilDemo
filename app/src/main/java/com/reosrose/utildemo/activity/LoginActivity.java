@@ -36,8 +36,6 @@ public class LoginActivity extends BaseActivity implements TextWatcher, View.OnC
     }
 
     private void initEvent() {
-
-
         name.addTextChangedListener(this);
         password.addTextChangedListener(this);
         login.setOnClickListener(this);
@@ -49,8 +47,8 @@ public class LoginActivity extends BaseActivity implements TextWatcher, View.OnC
         password = (EditText) findViewById(R.id.password);
         login = (Button) findViewById(R.id.login);
         regist = (Button) findViewById(R.id.regist);
-        userName = "123";
-        userPassword = "123";
+//        userName = "123";
+//        userPassword = "123";
     }
 
     @Override
@@ -65,8 +63,8 @@ public class LoginActivity extends BaseActivity implements TextWatcher, View.OnC
 
     @Override
     public void afterTextChanged(Editable s) {
-//        userName = name.getText().toString();
-//        userPassword = password.getText().toString();
+        userName = name.getText().toString();
+        userPassword = password.getText().toString();
     }
 
     @Override
@@ -75,45 +73,45 @@ public class LoginActivity extends BaseActivity implements TextWatcher, View.OnC
         switch (id){
             case R.id.login:
                 if(TextUtils.isEmpty(userName) && TextUtils.isEmpty(userPassword)){
-                    ToastUtil.show(mContext,"用户名或密码不能为空");
+                    ToastUtil.show(mContext.getApplicationContext(),"用户名或密码不能为空");
                     return;
                 }
-                boolean flag = DBUtils.getIsExitByName(mContext,userName);
+                boolean flag = DBUtils.getIsExitByName(mContext.getApplicationContext(),userName);
                 if(flag){
-                    UserVo userVo = DBUtils.getUserByName(mContext,userName);
+                    UserVo userVo = DBUtils.getUserByName(mContext.getApplicationContext(),userName);
                     if(password != null){
                         if(password.equals(userVo.getPassword())){
                             GoActivityUtil.goToMainActivity(mContext);
                             finish();
                         }else {
-                            ToastUtil.show(mContext,"密码错误");
+                            ToastUtil.show(mContext.getApplicationContext(),"密码错误");
                         }
                     }
                 }else {
-                    ToastUtil.show(mContext,"用户名不存在");
+                    ToastUtil.show(mContext.getApplicationContext(),"用户名不存在");
                 }
 
                 break;
             case R.id.regist:
                 //注册
                 if(TextUtils.isEmpty(userName) && TextUtils.isEmpty(userPassword)){
-                    ToastUtil.show(mContext,"用户名或密码不能为空");
+                    ToastUtil.show(mContext.getApplicationContext(),"用户名或密码不能为空");
 
                     return;
                 }
-                boolean isExitByName = DBUtils.getIsExitByName(mContext,userName);
+                boolean isExitByName = DBUtils.getIsExitByName(mContext.getApplicationContext(),userName);
                 if(isExitByName){
-                    ToastUtil.show(mContext,"用户名已存在");
+                    ToastUtil.show(mContext.getApplicationContext(),"用户名已存在");
                     return;
                 }
                 UserVo userVo = new UserVo();
                 userVo.setUserName(userName);
                 userVo.setPassword(userPassword);
-               long result =  DBUtils.registUser(mContext,userVo);
+               long result =  DBUtils.registUser(mContext.getApplicationContext(),userVo);
                 if(result == -1){
-                    ToastUtil.show(mContext,"注册失败");
+                    ToastUtil.show(mContext.getApplicationContext(),"注册失败");
                 }else {
-                    ToastUtil.show(mContext,"注册成功");
+                    ToastUtil.show(mContext.getApplicationContext(),"注册成功");
                     GoActivityUtil.goToMainActivity(mContext);
                     finish();
 

@@ -7,6 +7,8 @@ import com.bumptech.glide.Glide;
 import com.reosrose.utildemo.R;
 import com.reosrose.utildemo.utils.ScreenSwitchUtil;
 
+import org.litepal.LitePal;
+
 public class MainActivity extends BaseActivity {
 
     @Override
@@ -25,5 +27,9 @@ public class MainActivity extends BaseActivity {
         super.onDestroy();
         //取消当前activity重力方向
         ScreenSwitchUtil.getInstance().stop();
+    }
+
+    private void startServer(){
+//        LitePal.getDatabase();
     }
 }

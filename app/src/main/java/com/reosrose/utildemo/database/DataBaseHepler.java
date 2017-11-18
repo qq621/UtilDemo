@@ -14,7 +14,7 @@ import com.reosrose.utildemo.utils.ToolUtils;
 public class DataBaseHepler extends SQLiteOpenHelper {
 
     public DataBaseHepler(Context context) {
-        super(context, ConstantUtli.DB_NAME, null, ToolUtils.getAppVersionCode(context));
+        super(context, ConstantUtli.DB_NAME, null, ToolUtils.getAppVersionCode(context.getApplicationContext()));
 //        super(context, ConstantUtli.DB_NAME, null, 1);
     }
 

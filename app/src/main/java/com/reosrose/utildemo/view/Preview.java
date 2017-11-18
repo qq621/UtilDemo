@@ -52,6 +52,6 @@ public class Preview extends SurfaceView implements SurfaceHolder.Callback {
 
     }
     private void showError(){
-        ToastUtil.show(mContext,"相机操作失败");
+        ToastUtil.show(mContext.getApplicationContext(),"相机操作失败");
     }
 }

@@ -8,23 +8,25 @@ import android.view.WindowManager;
 import android.widget.Toast;
 
 /**
+ * Toast 工具类
  * Created by yinsxi on 2017/11/18.
  */
 
 public class ToastUtil {
     private static Toast mToast;
+    //要传application 的context
     public static void show(Context context,String str){
         if(TextUtils.isEmpty(str)){
             return;
         }
-        WindowManager wm = (WindowManager) context.getApplicationContext().getSystemService(Context.WINDOW_SERVICE);
+        WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
         DisplayMetrics dm = new DisplayMetrics();
         wm.getDefaultDisplay().getMetrics(dm);
         int height = dm.heightPixels;
 
 
         if(mToast == null){
-            mToast = Toast.makeText(context.getApplicationContext(),str,Toast.LENGTH_SHORT);
+            mToast = Toast.makeText(context,str,Toast.LENGTH_SHORT);
         }else {
             mToast.setText(str);
         }
