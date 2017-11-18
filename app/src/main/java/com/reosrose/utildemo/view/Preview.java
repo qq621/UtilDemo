@@ -7,6 +7,8 @@ import android.view.SurfaceView;
 import android.view.SurfaceHolder;
 import android.widget.Toast;
 
+import com.reosrose.utildemo.utils.ToastUtil;
+
 /**
  * Created by yinsxi on 2017/11/12.
  */
@@ -50,6 +52,6 @@ public class Preview extends SurfaceView implements SurfaceHolder.Callback {
 
     }
     private void showError(){
-        Toast.makeText(mContext,"相机操作失败",Toast.LENGTH_SHORT).show();
+        ToastUtil.show(mContext,"相机操作失败");
     }
 }

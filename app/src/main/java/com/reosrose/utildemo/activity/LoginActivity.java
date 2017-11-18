@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.reosrose.utildemo.R;
 import com.reosrose.utildemo.utils.DBUtils;
 import com.reosrose.utildemo.utils.GoActivityUtil;
+import com.reosrose.utildemo.utils.ToastUtil;
 import com.reosrose.utildemo.vo.UserVo;
 
 public class LoginActivity extends BaseActivity implements TextWatcher, View.OnClickListener{
@@ -74,7 +75,7 @@ public class LoginActivity extends BaseActivity implements TextWatcher, View.OnC
         switch (id){
             case R.id.login:
                 if(TextUtils.isEmpty(userName) && TextUtils.isEmpty(userPassword)){
-                    Toast.makeText(mContext,"用户名或密码不能为空",Toast.LENGTH_SHORT).show();
+                    ToastUtil.show(mContext,"用户名或密码不能为空");
                     return;
                 }
                 boolean flag = DBUtils.getIsExitByName(mContext,userName);
@@ -85,24 +86,24 @@ public class LoginActivity extends BaseActivity implements TextWatcher, View.OnC
                             GoActivityUtil.goToMainActivity(mContext);
                             finish();
                         }else {
-                            Toast.makeText(mContext,"密码错误",Toast.LENGTH_SHORT).show();
+                            ToastUtil.show(mContext,"密码错误");
                         }
                     }
                 }else {
-                    Toast.makeText(mContext,"用户名不存在",Toast.LENGTH_SHORT).show();
+                    ToastUtil.show(mContext,"用户名不存在");
                 }
-                //后面补上登录界面逻辑
 
                 break;
             case R.id.regist:
                 //注册
                 if(TextUtils.isEmpty(userName) && TextUtils.isEmpty(userPassword)){
-                    Toast.makeText(mContext,"用户名或密码不能为空",Toast.LENGTH_SHORT).show();
+                    ToastUtil.show(mContext,"用户名或密码不能为空");
+
                     return;
                 }
                 boolean isExitByName = DBUtils.getIsExitByName(mContext,userName);
                 if(isExitByName){
-                    Toast.makeText(mContext,"用户名已存在",Toast.LENGTH_SHORT).show();
+                    ToastUtil.show(mContext,"用户名已存在");
                     return;
                 }
                 UserVo userVo = new UserVo();
@@ -110,10 +111,9 @@ public class LoginActivity extends BaseActivity implements TextWatcher, View.OnC
                 userVo.setPassword(userPassword);
                long result =  DBUtils.registUser(mContext,userVo);
                 if(result == -1){
-                    Toast.makeText(mContext,"注册失败",Toast.LENGTH_SHORT).show();
-
+                    ToastUtil.show(mContext,"注册失败");
                 }else {
-                    Toast.makeText(mContext,"注册成功",Toast.LENGTH_SHORT).show();
+                    ToastUtil.show(mContext,"注册成功");
                     GoActivityUtil.goToMainActivity(mContext);
                     finish();
 
