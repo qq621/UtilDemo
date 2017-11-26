@@ -9,7 +9,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 public class DBHepler extends DataBaseHepler {
 
-    protected final SQLiteDatabase writableDatabase;
+    protected  SQLiteDatabase writableDatabase;
     private DBHepler dbHepler;
 
     public DBHepler(Context context) {
@@ -21,9 +21,9 @@ public class DBHepler extends DataBaseHepler {
     }
     //关闭数据库
     public void closeDB(){
-        if(dbHepler != null ){
-            dbHepler.close();
-            dbHepler = null;
+        if(writableDatabase != null ){
+            writableDatabase.close();
+            writableDatabase = null;
         }
     }
 }
