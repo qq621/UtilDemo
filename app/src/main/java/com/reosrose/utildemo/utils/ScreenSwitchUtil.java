@@ -107,7 +107,7 @@ public class ScreenSwitchUtil {
     /** 停止监听 */
     public void stop() {
         sm.unregisterListener(listener);
-        sm1.unregisterListener(listener1);
+//        sm1.unregisterListener(listener1);
     }
     /**
      * 手动横竖屏切换方向
