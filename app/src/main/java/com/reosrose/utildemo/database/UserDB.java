@@ -80,8 +80,8 @@ public class UserDB extends DBHepler {
     }
     private UserVo getUserVo(Cursor cursor) {
         UserVo userVo = new UserVo();
-        userVo.setUserName(cursor.getColumnName(cursor.getColumnIndex("userName")));
-        userVo.setPassword(cursor.getColumnName(cursor.getColumnIndex("password")));
+        userVo.setUserName(cursor.getString(cursor.getColumnIndex("userName")));
+        userVo.setPassword(cursor.getString(cursor.getColumnIndex("password")));
         return userVo;
     }
 }
