@@ -33,7 +33,7 @@
     <EditText
         android:id="@+id/name"
         android:layout_width="158dp"
-        android:layout_height="37dp"
+        android:layout_height="43dp"
         android:layout_marginLeft="161dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"

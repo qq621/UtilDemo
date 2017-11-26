@@ -20,7 +20,7 @@ public class LogUtils {
     static String className;//类名
     static String methodName;//方法名
     static int lineNumber;//行数
-    private static SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss", Locale.US);//日期格式;
+    private static SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.US);//日期格式;
     private static String TAG = "LogUtils";
 
 

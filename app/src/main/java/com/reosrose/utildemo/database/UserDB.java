@@ -56,24 +56,21 @@ public class UserDB extends DBHepler {
 
     }
     public UserVo queryByName(String name){
-
-        String sql = "select * from User where name = ?";
-        List<UserVo> list = new ArrayList<>();
+        UserVo userVo = null;
+        String sql = "select * from User where userName = ?";
+//        List<UserVo> list = new ArrayList<>();
         Cursor cursor = writableDatabase.rawQuery(sql,new String[]{name});
-        if (cursor.moveToFirst()){
-            while (cursor.moveToNext()){
-                UserVo userVo = getUserVo(cursor);
-                list.add(userVo);
-            }
+        if(cursor.moveToFirst()){
+            do{
+                userVo = getUserVo(cursor);
+            }while (cursor.moveToNext());
         }
-        if(cursor != null){
-            cursor.close();
-        }
-        return list.get(0);
+        cursor.close();
+        return userVo;
 
     }
     public boolean getIsExitByName(String name){
-        String sql = "select * from User where name = ?";
+        String sql = "select * from User where userName = ?";
         Cursor cursor = writableDatabase.rawQuery(sql,new String[]{name});
         boolean flag = cursor.moveToNext();
         if(cursor != null){

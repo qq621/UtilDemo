@@ -14,10 +14,10 @@ public class DBHepler extends DataBaseHepler {
 
     public DBHepler(Context context) {
         super(context);
-        if (dbHepler == null) {
-            dbHepler = new DBHepler(context);
-        }
-        writableDatabase = dbHepler.getWritableDatabase();
+//        if (dbHepler == null) {
+//            dbHepler = new DBHepler(context);
+//        }
+        writableDatabase = getWritableDatabase();
     }
     //关闭数据库
     public void closeDB(){

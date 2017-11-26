@@ -13,20 +13,18 @@ import com.reosrose.utildemo.vo.UserVo;
 public class DBUtils {
 
     private static UserDB userDB;
-
-    public DBUtils(Context context){
-
+    public static void init(Context context){
+        userDB = new UserDB(context);
     }
     public static boolean getIsExitByName(Context context,String name){
-        UserDB userDB = new UserDB(context);
+
         return userDB.getIsExitByName(name);
     }
     public static UserVo getUserByName(Context context,String name){
-        UserDB userDB = new UserDB(context);
+
         return userDB.queryByName(name);
     }
     public static long registUser(Context context,UserVo userVo){
-        UserDB userDB = new UserDB(context);
         return userDB.insert(userVo);
     }
 }

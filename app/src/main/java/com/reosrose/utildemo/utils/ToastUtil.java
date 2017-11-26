@@ -30,7 +30,7 @@ public class ToastUtil {
         }else {
             mToast.setText(str);
         }
-        mToast.setGravity(Gravity.TOP, 0, height / 3);
+        mToast.setGravity(Gravity.BOTTOM, 0, height / 5);
         mToast.show();
     }
 }

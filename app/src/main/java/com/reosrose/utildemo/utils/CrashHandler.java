@@ -39,7 +39,7 @@ public class CrashHandler implements UncaughtExceptionHandler {
     private Map<String, String> infos = new HashMap<String, String>();
 
     //用于格式化日期,作为日志文件名的一部分
-    private DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");
+    private DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 
     /** 保证只有一个CrashHandler实例 */
     private CrashHandler() {
@@ -130,7 +130,7 @@ public class CrashHandler implements UncaughtExceptionHandler {
             try {
                 field.setAccessible(true);
                 infos.put(field.getName(), field.get(null).toString());
-                LogUtils.e(field.getName() + " : " + field.get(null));
+//                LogUtils.e(field.getName() + " : " + field.get(null));
             } catch (Exception e) {
                 LogUtils.e("an error occured when collect crash info "+ e);
             }
@@ -163,16 +163,15 @@ public class CrashHandler implements UncaughtExceptionHandler {
         String result = writer.toString();
         sb.append(result);
         try {
-            long timestamp = System.currentTimeMillis();
             String time = formatter.format(new Date());
-            String fileName = "crash-" + time + "-" + timestamp + ".log";
+            String fileName = "crash-" + time + "-" + ".log";
             if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
                 String path = PathUtil.getLogPath();
                 File dir = new File(path);
                 if (!dir.exists()) {
                     dir.mkdirs();
                 }
-                FileOutputStream fos = new FileOutputStream(path + fileName);
+                FileOutputStream fos = new FileOutputStream(path + fileName,true);
                 fos.write(sb.toString().getBytes());
                 fos.close();
             }
