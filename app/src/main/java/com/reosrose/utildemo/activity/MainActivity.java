@@ -10,7 +10,7 @@ import com.reosrose.utildemo.utils.ScreenSwitchUtil;
 import org.litepal.LitePal;
 
 public class MainActivity extends BaseActivity {
-
+    String str = "http://b261.photo.store.qq.com/psb?/V11mmPKr4bsGFW/CTLIa0RhfaTvhG.ydyvAN8oC8jX8veg6WyI6D*APyNQ!/b/dAUBAAAAAAAA&bo=WAIgA1gCIAMFCSo!&rf=viewer_4";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,8 +18,9 @@ public class MainActivity extends BaseActivity {
         //监听当前activity 重力方向 跟随重力横竖屏
         ScreenSwitchUtil.getInstance().start(MainActivity.this);
         ImageView imageView = (ImageView) findViewById(R.id.imageViewId);
-        Glide.with(this)
-                .load("").into(imageView);
+
+//        Glide.with(this)
+//                .load(str).into(imageView);
     }
 
     @Override
@@ -29,7 +30,4 @@ public class MainActivity extends BaseActivity {
         ScreenSwitchUtil.getInstance().stop();
     }
 
-    private void startServer(){
-//        LitePal.getDatabase();
-    }
 }

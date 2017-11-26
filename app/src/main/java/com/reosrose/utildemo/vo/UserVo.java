@@ -7,6 +7,7 @@ import java.io.Serializable;
  */
 
 public class UserVo implements Serializable {
+
     private String userName;
 
     public String getUserName() {

@@ -93,9 +93,9 @@ public class ScreenSwitchUtil {
         listener = new OrientationSensorListener(mHandler);
 
         // 根据 旋转之后/点击全屏之后 两者方向一致,激活sm.
-        sm1 = (SensorManager) context.getSystemService(Context.SENSOR_SERVICE);
-        sensor1 = sm1.getDefaultSensor(Sensor.TYPE_GRAVITY);
-        listener1 = new OrientationSensorListener1();
+//        sm1 = (SensorManager) context.getSystemService(Context.SENSOR_SERVICE);
+//        sensor1 = sm1.getDefaultSensor(Sensor.TYPE_GRAVITY);
+//        listener1 = new OrientationSensorListener1();
     }
 
     /** 开始监听 */

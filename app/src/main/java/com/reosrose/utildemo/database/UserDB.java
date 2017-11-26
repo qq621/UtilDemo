@@ -22,6 +22,7 @@ public class UserDB extends DBHepler {
 
     /**
      * 批量注册
+     * 开启事务，提高效率
      * @param list
      * @return
      */
