@@ -23,7 +23,7 @@ public class PathUtil {
      * @return
      */
     public static String getAppDocPath(){
-        return Environment.getDownloadCacheDirectory().getPath()+File.separator
+        return Environment.getExternalStorageDirectory().getPath()+File.separator
                 +ConstantUtli.APP_NAME
                 +File.separator;
     }

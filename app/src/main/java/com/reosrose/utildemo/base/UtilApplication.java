@@ -19,7 +19,7 @@ public class UtilApplication extends Application {
         context = getApplicationContext();
         DBUtils.init(this);
         //初始化全局异常捕捉
-        CrashHandler.getIntance().init(getApplicationContext());
+//        CrashHandler.getIntance().init(getApplicationContext());
         ScreenSwitchUtil.init(getApplicationContext());
 
     }

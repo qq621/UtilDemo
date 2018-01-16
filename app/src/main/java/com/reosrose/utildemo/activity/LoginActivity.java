@@ -18,7 +18,7 @@ import com.reosrose.utildemo.utils.LogUtils;
 import com.reosrose.utildemo.utils.ToastUtil;
 import com.reosrose.utildemo.vo.UserVo;
 
-public class LoginActivity extends BaseActivity implements TextWatcher, View.OnClickListener{
+public class LoginActivity extends BaseActivity implements TextWatcher{
 
     private EditText name;
     private EditText password;

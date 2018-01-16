@@ -1,9 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cameraLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.reosrose.utildemo.activity.CameraActiity">
+    tools:context="com.reosrose.utildemo.activity.MainActivity">
+    <com.reosrose.utildemo.view.Preview
+        android:id="@+id/phone_preview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+    <Button
+        android:text="拍照"
+        android:id="@+id/phone_takepic"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp"
+        android:layout_width="100dp"
+        android:layout_height="36dp" />
 
-</android.support.constraint.ConstraintLayout>
+
+
+</RelativeLayout>

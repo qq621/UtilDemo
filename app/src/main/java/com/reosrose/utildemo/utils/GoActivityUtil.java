@@ -1,8 +1,10 @@
 package com.reosrose.utildemo.utils;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 
+import com.reosrose.utildemo.activity.CameraActiity;
 import com.reosrose.utildemo.activity.MainActivity;
 
 /**
@@ -19,5 +21,10 @@ public class GoActivityUtil {
         Intent intent = new Intent();
         intent.setClass(context, MainActivity.class);
         context.startActivity(intent);
+    }
+    public static void goToCameraActivity(Context context){
+        Intent intent = new Intent();
+        intent.setClass(context, CameraActiity.class);
+        ((Activity)context).startActivityForResult(intent,1001);
     }
 }

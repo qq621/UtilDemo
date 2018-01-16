@@ -26,7 +26,7 @@ import java.util.Map;
  */
 
 public class CrashHandler implements UncaughtExceptionHandler {
-    private static final String TAG = CrashHandler.class.getSimpleName();
+    private  final String TAG = getClass().getSimpleName();
     //CrashHandler实例
     private static CrashHandler crashHandler = new CrashHandler();
     //系统默认的UncaughtException处理类
@@ -164,7 +164,7 @@ public class CrashHandler implements UncaughtExceptionHandler {
         sb.append(result);
         try {
             String time = formatter.format(new Date());
-            String fileName = "crash-" + time + "-" + ".log";
+            String fileName = time+"-crash" + ".log";
             if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
                 String path = PathUtil.getLogPath();
                 File dir = new File(path);
