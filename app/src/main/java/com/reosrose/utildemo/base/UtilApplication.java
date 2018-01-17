@@ -5,6 +5,7 @@ import android.content.Context;
 
 import com.reosrose.utildemo.utils.CrashHandler;
 import com.reosrose.utildemo.utils.DBUtils;
+import com.reosrose.utildemo.utils.GlideUtils;
 import com.reosrose.utildemo.utils.ScreenSwitchUtil;
 
 /**
@@ -21,6 +22,7 @@ public class UtilApplication extends Application {
         //初始化全局异常捕捉
 //        CrashHandler.getIntance().init(getApplicationContext());
         ScreenSwitchUtil.init(getApplicationContext());
+        GlideUtils.init(getApplicationContext());
 
     }
     public static Context getContext(){

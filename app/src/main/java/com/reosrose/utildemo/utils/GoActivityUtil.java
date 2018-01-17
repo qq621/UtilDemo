@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 
 import com.reosrose.utildemo.activity.CameraActiity;
+import com.reosrose.utildemo.activity.GrideViewActivity;
 import com.reosrose.utildemo.activity.MainActivity;
 
 /**
@@ -26,5 +27,10 @@ public class GoActivityUtil {
         Intent intent = new Intent();
         intent.setClass(context, CameraActiity.class);
         ((Activity)context).startActivityForResult(intent,1001);
+    }
+    public static void goToGalleryActivity(Context context){
+        Intent intent = new Intent();
+        intent.setClass(context, GrideViewActivity.class);
+        context.startActivity(intent);
     }
 }

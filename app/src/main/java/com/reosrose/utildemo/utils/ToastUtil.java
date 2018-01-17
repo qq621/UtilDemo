@@ -25,6 +25,7 @@ public class ToastUtil {
         int height = dm.heightPixels;
 
 
+
         if(mToast == null){
             mToast = Toast.makeText(context,str,Toast.LENGTH_SHORT);
         }else {

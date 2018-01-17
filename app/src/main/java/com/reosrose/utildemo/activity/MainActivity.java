@@ -34,6 +34,7 @@ public class MainActivity extends BaseActivity{
     private void initEvent() {
         imageView.setOnClickListener(this);
         findViewById(R.id.open_camera).setOnClickListener(this);
+        findViewById(R.id.open_gallery).setOnClickListener(this);
     }
 
     @Override
@@ -53,6 +54,9 @@ public class MainActivity extends BaseActivity{
                 break;
             case R.id.open_camera:
                 GoActivityUtil.goToCameraActivity(MainActivity.this);
+                break;
+            case R.id.open_gallery:
+                GoActivityUtil.goToGalleryActivity(MainActivity.this);
                 break;
             default:
                 break;
