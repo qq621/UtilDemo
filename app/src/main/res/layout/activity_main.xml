@@ -22,7 +22,7 @@
         android:background="@drawable/botton_shape"
         android:textColor="@color/wighte"
         android:textSize="18sp"
-        android:text="图库"
+        android:text="网络图库"
         android:layout_width="100dp"
         android:layout_height="48dp" />
 
