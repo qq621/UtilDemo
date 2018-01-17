@@ -9,7 +9,7 @@ import com.reosrose.utildemo.activity.GrideViewActivity;
 import com.reosrose.utildemo.activity.MainActivity;
 
 /**
- *
+ *Activity 跳转工具类
  * Created by yinsxi on 2017/11/8.
  */
 

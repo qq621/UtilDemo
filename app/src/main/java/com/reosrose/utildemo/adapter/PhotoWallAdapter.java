@@ -22,7 +22,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * 照片墙
+ * 照片墙适配器
  * Created by yinsxi on 2018/1/17.
  */
 

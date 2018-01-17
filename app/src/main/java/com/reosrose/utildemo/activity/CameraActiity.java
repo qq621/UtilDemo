@@ -8,6 +8,9 @@ import android.widget.RelativeLayout;
 import com.reosrose.utildemo.R;
 import com.reosrose.utildemo.view.Preview;
 
+/**
+ * 自定义相机 Model
+ */
 public class CameraActiity extends BaseActivity {
 
     private Preview preview;
@@ -44,6 +47,7 @@ public class CameraActiity extends BaseActivity {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
+        //触摸聚焦
         preview.clickFoucs();
         return super.onTouchEvent(event);
     }

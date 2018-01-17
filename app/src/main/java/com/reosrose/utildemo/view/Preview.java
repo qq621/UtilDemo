@@ -26,7 +26,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * 预览图片
+ * 预览图片，相机
  * Created by yinsxi on 2017/11/12.
  */
 
@@ -70,6 +70,7 @@ public class Preview extends SurfaceView implements SurfaceHolder.Callback {
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
         try {
+            //默认打开后置相机  这里忽略高版本动态判断相机权限
             mCamera = Camera.open();
             setCamera();
         } catch (Exception e) {
@@ -80,18 +81,26 @@ public class Preview extends SurfaceView implements SurfaceHolder.Callback {
         startPreviewDisplay(holder);
     }
 
+    /**
+     * 设置相机参数
+     */
     private void setCamera() {
         mParameters = mCamera.getParameters();
         if (isAutoFocusSupported()) {
             mParameters.setFocusMode(Parameters.FOCUS_MODE_AUTO);
         }
         clickFoucs();
+        //设置预览图片大小
         List<Camera.Size> supportedPreview = mParameters.getSupportedPreviewSizes();
         setPreviewSize(supportedPreview);
+        //设置保存图片大小
         setPictureSize();
         mCamera.setParameters(mParameters);
     }
 
+    /**
+     * 设置保存图片大小  控制在  1080*1920
+     */
     private void setPictureSize() {
         int height = 0;
         int width = 0;
@@ -108,6 +117,10 @@ public class Preview extends SurfaceView implements SurfaceHolder.Callback {
         }
     }
 
+    /**
+     * 设置预览图片大小
+     * @param supportedPreview 支持的预览Size 集合
+     */
     private void setPreviewSize(List<Camera.Size> supportedPreview) {
         int width = 0;
         int height = 0;
@@ -124,6 +137,9 @@ public class Preview extends SurfaceView implements SurfaceHolder.Callback {
         mParameters.setPreviewSize(width, height);
     }
 
+    /**
+     * 自动和手动调用 实现自动和手动聚焦
+     */
     public void clickFoucs() {
         mCamera.autoFocus(new Camera.AutoFocusCallback() {
             @Override
@@ -132,7 +148,7 @@ public class Preview extends SurfaceView implements SurfaceHolder.Callback {
             }
         });
     }
-
+    /**顾名思义  当尺寸发生变化的时候调用，第一次进入会执行一次，除非发生横竖屏切换才会再次执行*/
     @Override
     public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
         if (mSurfaceHolder.getSurface() == null) {
@@ -145,6 +161,10 @@ public class Preview extends SurfaceView implements SurfaceHolder.Callback {
 
     }
 
+    /**
+     * 判断是否支持自动聚焦
+     * @return
+     */
     private boolean isAutoFocusSupported() {
         List<String> modes = mParameters.getSupportedFocusModes();
         return modes.contains(Camera.Parameters.FOCUS_MODE_AUTO);
@@ -162,6 +182,10 @@ public class Preview extends SurfaceView implements SurfaceHolder.Callback {
         }
     }
 
+    /**
+     * 开始预览
+     * @param holder 操控Surface视图者
+     */
     private void startPreviewDisplay(SurfaceHolder holder) {
         checkCamera();
         try {
@@ -172,6 +196,9 @@ public class Preview extends SurfaceView implements SurfaceHolder.Callback {
         }
     }
 
+    /**
+     * 停止预览
+     */
     private void stopPreviewDisplay() {
         checkCamera();
         try {
@@ -180,7 +207,7 @@ public class Preview extends SurfaceView implements SurfaceHolder.Callback {
             LogUtils.e("Error while STOP preview for camera" + e.toString());
         }
     }
-
+    /**检查相机状态*/
     private void checkCamera() {
         if (mCamera == null) {
             throw new IllegalStateException("Camera must be set when start/stop preview, call <setCamera(Camera)> to set");
@@ -214,7 +241,7 @@ public class Preview extends SurfaceView implements SurfaceHolder.Callback {
             });
         }
     }
-
+    /**异步去保存图片到本地*/
     private class MyPictureCallBack implements Camera.PictureCallback {
 
         @Override
@@ -245,6 +272,7 @@ public class Preview extends SurfaceView implements SurfaceHolder.Callback {
                     }
                 }
             }).start();
+            /**每次拍完照后，会停止预览，所以要重新开始预览，，*/
             mCamera.startPreview();
 
         }
